@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xsl:stylesheet version="2.0"
-                xmlns:html="http://www.w3.org/TR/REC-html40"
-                xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
-                xmlns:sitemap="http://www.sitemaps.org/schemas/sitemap/0.9"
-                xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+    xmlns:html="http://www.w3.org/TR/REC-html40"
+    xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
+    xmlns:sitemap="http://www.sitemaps.org/schemas/sitemap/0.9"
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
     <xsl:output method="html" version="1.0" encoding="UTF-8" indent="yes"/>
     <xsl:template match="/">
         <html xmlns="http://www.w3.org/1999/xhtml">
@@ -78,28 +78,33 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            <xsl:for-each select="sitemap:sitemapindex/sitemap:sitemap">
-                                <xsl:variable name="sitemapURL">
-                                    <xsl:value-of select="sitemap:loc"/>
-                                </xsl:variable>
-                                <tr>
-                                    <td>
-                                        <a href="{$sitemapURL}"><xsl:value-of select="sitemap:loc"/></a>
-                                    </td>
-                                    <td>
-                                        <xsl:value-of select="concat(substring(sitemap:lastmod,0,11),concat(' ', substring(sitemap:lastmod,12,5)))"/>
-                                    </td>
-                                </tr>
-                            </xsl:for-each>
+                                <xsl:for-each select="sitemap:sitemapindex/sitemap:sitemap">
+                                    <xsl:variable name="sitemapURL">
+                                        <xsl:value-of select="sitemap:loc"/>
+                                    </xsl:variable>
+                                    <tr>
+                                        <td>
+                                            <a href="{$sitemapURL}">
+                                                <xsl:value-of select="sitemap:loc"/>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <xsl:value-of select="concat(substring(sitemap:lastmod,0,11),concat(' ', substring(sitemap:lastmod,12,5)))"/>
+                                        </td>
+                                    </tr>
+                                </xsl:for-each>
                             </tbody>
                         </table>
                     </xsl:if>
                     <xsl:if test="count(sitemap:sitemapindex/sitemap:sitemap) &lt; 1">
-                        <p class="desc"><a href="https://tivolicloud.github.io/sitemap.xml" class="back-link">&#8592; Back to index</a></p>
+                        <p class="desc">
+                            <a href="https://tivolicloud.github.io/blog/sitemap.xml" class="back-link">&#8592; Back to index</a>
+                        </p>
                         <table id="sitemap" cellpadding="3">
                             <thead>
                                 <tr>
-                                    <th width="70%">URL (<xsl:value-of select="count(sitemap:urlset/sitemap:url)"/> total)</th>
+                                    <th width="70%">URL (<xsl:value-of select="count(sitemap:urlset/sitemap:url)"/>
+ total)</th>
                                     <th width="15%">Images</th>
                                     <th title="Last Modification Time" width="15%">Last Modified</th>
                                 </tr>
@@ -127,7 +132,9 @@
                                 </xsl:for-each>
                             </tbody>
                         </table>
-                        <p class="desc"><a href="https://tivolicloud.github.io/sitemap.xml" class="back-link">&#8592; Back to index</a></p>
+                        <p class="desc">
+                            <a href="https://tivolicloud.github.io/blog/sitemap.xml" class="back-link">&#8592; Back to index</a>
+                        </p>
                     </xsl:if>
                 </div>
             </body>
